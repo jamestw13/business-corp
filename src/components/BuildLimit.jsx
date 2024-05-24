@@ -1,10 +1,10 @@
 import { DoubleSide, BoxGeometry } from 'three';
 import { Text } from '@react-three/drei';
 import { useContext } from 'react';
-import { WorldContext } from './App';
+import { GameContext } from '../contexts/GameContext';
 
 const BuildLimit = () => {
-  const { world } = useContext(WorldContext);
+  const { world } = useContext(GameContext);
   const buildLimitWidth = world.buildLimitWidth;
   const buildLimitHeight = world.buildLimitHeight;
   return (

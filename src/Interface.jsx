@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { WorldContext } from './App';
+import { GameContext } from './contexts/GameContext';
 
 const Interface = () => {
   let balance = 0;
-  const { world } = useContext(WorldContext);
+  const { world } = useContext(GameContext);
   if (world) {
     balance = world.balance;
   }

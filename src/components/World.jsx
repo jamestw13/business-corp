@@ -3,15 +3,16 @@ import { useContext, useState } from 'react';
 import Ground from './Ground';
 import BuildLimit from './BuildLimit';
 
-import { WorldContext } from './App';
-import Office from './Office';
-import Restroom from './Restroom';
+import { GameContext } from '../contexts/GameContext';
+import Office from './Spaces/Office';
+import Restroom from './Spaces/Restroom';
 
 const World = () => {
   let buildLimitWidth = 6;
   let buildLimitHeight = 4;
   let spaces = [];
-  const { world } = useContext(WorldContext);
+  const { world } = useContext(GameContext);
+
   if (world) {
     buildLimitWidth = world.buildLimitWidth;
     buildLimitHeight = world.buildLimitHeight;
@@ -23,7 +24,7 @@ const World = () => {
       <Ground />
       <BuildLimit />
 
-      {spaces.map(
+      {spaces?.map(
         (spaces, index) =>
           (spaces.type === 'office' && <Office key={index} spaces={spaces} />) ||
           (spaces.type === 'restroom' && <Restroom key={index} spaces={spaces} />)
