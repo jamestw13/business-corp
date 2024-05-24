@@ -1,13 +1,18 @@
 import { useContext } from 'react';
-// import { CameraContext } from './App';
+import { WorldContext } from './App';
 
-const Interface = ({ world }) => {
-  // const cameraRef = useContext(CameraContext);
+const Interface = () => {
+  let balance = 0;
+  const { world } = useContext(WorldContext);
+  if (world) {
+    balance = world.balance;
+  }
+  const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
   return (
     <div className="interface">
       <h1>{world.companyName}</h1>
-
+      <h2>{formatter.format(balance)}</h2>
       <button
         onClick={() => {
           console.log('set camera');
