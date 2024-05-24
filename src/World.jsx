@@ -8,18 +8,20 @@ import Office from './Office';
 import Restroom from './Restroom';
 
 const World = () => {
-  let buildLimit = 4;
+  let buildLimitWidth = 6;
+  let buildLimitHeight = 4;
   let spaces = [];
   const { world } = useContext(WorldContext);
   if (world) {
-    buildLimit = world.buildLimit;
+    buildLimitWidth = world.buildLimitWidth;
+    buildLimitHeight = world.buildLimitHeight;
     spaces = world.spaces;
   }
 
   return (
     <>
       <Ground />
-      <BuildLimit buildLimit={buildLimit} />
+      <BuildLimit />
 
       {spaces.map(
         (spaces, index) =>

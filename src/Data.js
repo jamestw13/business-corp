@@ -3,7 +3,8 @@ import { randFullName } from '@ngneat/falso';
 export class WorldData {
   constructor() {
     this.companyName = ['Acme Corp'];
-    this.buildLimit = 4.5;
+    this.buildLimitWidth = 6;
+    this.buildLimitHeight = 4;
     this.balance = 5000;
     this.spaces = [new Office(1, 1, 1, 0), new Office(1, -1, 1, 2), new Restroom(-1, 1, 1, 3), new Space(-1, 1, 1, 3)];
   }
