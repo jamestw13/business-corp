@@ -1,22 +1,20 @@
-import { useContext } from 'react';
-import { GameContext } from './contexts/GameContext';
+import useGame from './stores/useGame';
 
 const Interface = () => {
-  let balance = 0;
-  const { world } = useContext(GameContext);
-  if (world) {
-    balance = world.balance;
-  }
+  const companyName = useGame(state => state.companyName);
+  const balance = useGame(state => state.balance);
+
   const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
   return (
     <div className="interface">
-      <h1>{world.companyName}</h1>
+      <h1>{companyName}</h1>
       <h2>{formatter.format(balance)}</h2>
+
       <button
         onClick={() => {
           console.log('set camera');
-          cameraRef.current?.position.set(2, 2, 2);
+          // cameraRef.current?.position.set(2, 2, 2);
         }}
       >
         reset camera

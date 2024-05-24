@@ -1,9 +1,14 @@
 import { DoubleSide } from 'three';
 
 const Restroom = ({ spaces }) => {
-  const { position, rotation } = spaces;
+  const { position, rotation, ref } = spaces;
   return (
-    <group position={[position[0], position[1] + 0.01, position[2]]} rotation={[0, (Math.PI / 2) * rotation, 0]}>
+    <group
+      ref={ref}
+      position={[position[0], position[1] + 0.01, position[2]]}
+      rotation={[0, (Math.PI / 2) * rotation, 0]}
+      userData={{ name: 'Restroom' }}
+    >
       <mesh position={[0, -0.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[2, 2]} />
         <meshStandardMaterial color="beige" />
@@ -17,24 +22,6 @@ const Restroom = ({ spaces }) => {
         <planeGeometry args={[1 / 3, 2 / 3]} />
         <meshStandardMaterial color="gray" side={DoubleSide} />
       </mesh>
-      {/* 
-      
-      <mesh position={[5 / 8, -0.75 / 2, 2 / 3]}>
-        <cylinderGeometry args={[0.1, 0.1, 0.25, 6]} />
-        <meshStandardMaterial color="black" side={DoubleSide} />
-      </mesh>
-      <mesh position={[-5 / 8, -0.75 / 2, 2 / 3]}>
-        <cylinderGeometry args={[0.1, 0.1, 0.25, 6]} />
-        <meshStandardMaterial color="black" side={DoubleSide} />
-      </mesh>
-      <mesh position={[5 / 8, -0.75 / 2, 0]}>
-        <cylinderGeometry args={[0.1, 0.1, 0.25, 6]} />
-        <meshStandardMaterial color="black" side={DoubleSide} />
-      </mesh>
-      <mesh position={[-5 / 8, -0.75 / 2, 0]}>
-        <cylinderGeometry args={[0.1, 0.1, 0.25, 6]} />
-        <meshStandardMaterial color="black" side={DoubleSide} />
-      </mesh> */}
     </group>
   );
 };

@@ -1,34 +1,37 @@
-import { useContext, useState } from 'react';
-
 import Ground from './Ground';
 import BuildLimit from './BuildLimit';
 
-import { GameContext } from '../contexts/GameContext';
-import Office from './Spaces/Office';
-import Restroom from './Spaces/Restroom';
+import { useFrame, useThree } from '@react-three/fiber';
+import Space from './Spaces/Space';
+import useGame from '../stores/useGame';
 
 const World = () => {
-  let buildLimitWidth = 6;
-  let buildLimitHeight = 4;
-  let spaces = [];
-  const { world } = useContext(GameContext);
+  const spaces = useGame(state => state.spaces);
 
-  if (world) {
-    buildLimitWidth = world.buildLimitWidth;
-    buildLimitHeight = world.buildLimitHeight;
-    spaces = world.spaces;
-  }
+  const { camera, raycaster, mouse } = useThree();
+
+  // useFrame(() => {
+  //   if (buildLimitRef.current) {
+  //     raycaster.setFromCamera(mouse, camera);
+  //     const intersects = raycaster.intersectObjects([buildLimitRef.current]);
+
+  //     if (intersects.length > 0) {
+  //       console.log(intersects.map(e => e.object.userData.name));
+  //       // console.log('Inside the BuildLimit box');
+  //     } else {
+  //       // console.log('Outside the BuildLimit box');
+  //     }
+  //   }
+  // });
 
   return (
     <>
       <Ground />
       <BuildLimit />
 
-      {spaces?.map(
-        (spaces, index) =>
-          (spaces.type === 'office' && <Office key={index} spaces={spaces} />) ||
-          (spaces.type === 'restroom' && <Restroom key={index} spaces={spaces} />)
-      )}
+      {spaces?.map((spaces, index) => (
+        <Space key={index} spaces={spaces} />
+      ))}
     </>
   );
 };
