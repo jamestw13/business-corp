@@ -20,9 +20,10 @@ const World = () => {
       <Ground />
       <BuildLimit buildLimit={buildLimit} />
 
-      {spaces.map((spaces, index) => (
-        <Office key={index} position={spaces.position} rotation={spaces.rotation} />
-      ))}
+      {spaces.map(
+        (spaces, index) =>
+          spaces.type === 'office' && <Office key={index} position={spaces.position} rotation={spaces.rotation} />
+      )}
     </>
   );
 };
