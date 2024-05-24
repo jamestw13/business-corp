@@ -5,6 +5,7 @@ import BuildLimit from './BuildLimit';
 
 import { WorldContext } from './App';
 import Office from './Office';
+import Restroom from './Restroom';
 
 const World = () => {
   let buildLimit = 4;
@@ -22,7 +23,8 @@ const World = () => {
 
       {spaces.map(
         (spaces, index) =>
-          spaces.type === 'office' && <Office key={index} position={spaces.position} rotation={spaces.rotation} />
+          (spaces.type === 'office' && <Office key={index} position={spaces.position} rotation={spaces.rotation} />) ||
+          (spaces.type === 'restroom' && <Restroom key={index} position={spaces.position} rotation={spaces.rotation} />)
       )}
     </>
   );
