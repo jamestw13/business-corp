@@ -22,7 +22,7 @@ function App() {
           position: [2, 2, 2],
         }}
         onCreated={({ gl, scene }) => {
-          scene.fog = new Fog('#202020', 5, 10);
+          scene.fog = new Fog('#202020', 8, 20);
           gl.setClearColor(new Color('#202020'));
         }}
       >

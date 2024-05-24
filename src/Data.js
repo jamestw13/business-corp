@@ -23,11 +23,7 @@ export class Office extends Space {
   constructor(xPos, zPos, floor, rotation = 0) {
     super(xPos, zPos, floor, rotation);
     this.type = 'office';
-    this.desk1 = new Employee();
-
-    this.desk2;
-    this.desk3;
-    this.desk4;
+    this.desks = { 1: new Employee(), 2: null, 3: null, 4: null };
   }
 }
 
