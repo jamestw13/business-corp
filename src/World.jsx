@@ -23,8 +23,8 @@ const World = () => {
 
       {spaces.map(
         (spaces, index) =>
-          (spaces.type === 'office' && <Office key={index} position={spaces.position} rotation={spaces.rotation} />) ||
-          (spaces.type === 'restroom' && <Restroom key={index} position={spaces.position} rotation={spaces.rotation} />)
+          (spaces.type === 'office' && <Office key={index} spaces={spaces} />) ||
+          (spaces.type === 'restroom' && <Restroom key={index} spaces={spaces} />)
       )}
     </>
   );

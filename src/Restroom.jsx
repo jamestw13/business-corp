@@ -1,6 +1,7 @@
 import { DoubleSide } from 'three';
 
-const Restroom = ({ position, rotation }) => {
+const Restroom = ({ spaces }) => {
+  const { position, rotation } = spaces;
   return (
     <group position={[position[0], position[1] + 0.01, position[2]]} rotation={[0, (Math.PI / 2) * rotation, 0]}>
       <mesh position={[0, -0.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
